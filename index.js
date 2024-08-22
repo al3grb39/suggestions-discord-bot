@@ -20,14 +20,14 @@ client.on('messageCreate', message => {
         const messageContent = message.content;
 
         if (!messageContent.trim()) {
-            console.log('تم ارسال اقتراح جديد.');
+            console.log('تم ارسال تغريدة جديده');
             return;
         }
 
         const suggestionEmbed = new EmbedBuilder()
             .setColor(0x00B2FF)
-            .setTitle('📝 اقتراح جديد')
-            .setDescription(`**الاقتراح :**\n\`\`\`${messageContent}\`\`\``)
+            .setTitle('📝 اتغريده جديد')
+            .setDescription(`**التغريده :**\n\`\`\`${messageContent}\`\`\``)
             .setTimestamp()
             .setFooter({ text: `تم الارسال بواسطة : ${message.author.tag}` })
             .setThumbnail(message.author.displayAvatarURL())
@@ -135,7 +135,7 @@ client.on('interactionCreate', async interaction => {
         await interaction.reply({ content: `The suggestion has been ${decision.toLowerCase()}.`, ephemeral: true });
         const user = await interaction.guild.members.fetch(interaction.customId.split('_')[1]);
         if (user) {
-            user.send({ content: `تم الرد على اقتراحك ب ${decision}` })
+            user.send({ content: `تم الرد على تغريدتك ب ${decision}` })
         }
     }
 });
